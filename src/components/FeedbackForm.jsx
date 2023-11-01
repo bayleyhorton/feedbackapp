@@ -21,10 +21,12 @@ function FeedbackForm() {
     }, [feedbackEdit])
 
     const handleTextChange = ({ target: { value } }) => {
-        if(text === '') {
+        if(value === '') {
             setBtnDisabled(true)
             setMessage(null)
-        }else if(value.trim().length <= 10) {
+
+
+        }else if(value.trim().length < 10) {
             setMessage('Text must be at least 10 characters')
             setBtnDisabled(true)
         }else{
@@ -52,6 +54,8 @@ function FeedbackForm() {
             addFeedback(newFeedback)
 
         }
+
+        //to reset to default state after submission 
         setBtnDisabled(true)
         setRating(10)
         setText('')
@@ -62,7 +66,7 @@ function FeedbackForm() {
     <Card>
         <form onSubmit={handleSubmit}>
             <h2>How would you rate your service with us?</h2>
-            <RatingSelect select={(rating) => setRating(rating)} />
+            <RatingSelect select={setRating} selected={rating} />
             <div className="input-group">
                 <input 
                 onChange={handleTextChange} 
@@ -75,7 +79,7 @@ function FeedbackForm() {
 
             {message && <div className='message'>{message}</div>}
         </form>
-        </Card>
+    </Card>
   )
 }
 

@@ -8,18 +8,18 @@ function FeedbackItem({item }) {
   const {deleteFeedback, editFeedback} = useContext (FeedbackContext)
 
       return (
-    <Card>
-        <div className='num-display'>{item.rating}</div>
-        <button onClick={() => deleteFeedback(item.id)}className='close'>
-            <FaTimes color='purple' />
-        </button>
-        <button> 
-          <button onClick={() => editFeedback(item)} className="edit">
-            <FaEdit color='purple'/>
-          </button>
-        </button>
-        <div className='tex-display'>{item.text}</div>
-    </Card>
+        <Card>
+            <div className='num-display'>{item.rating}</div>
+            <button onClick={() => deleteFeedback(item.id)}className='close'>
+                <FaTimes color='purple' />
+            </button>
+            <button> 
+              <button onClick={() => editFeedback(item)} className="edit">
+                <FaEdit color='purple'/>
+              </button>
+            </button>
+            <div className='text-display'>{item.text}</div>
+        </Card>
   )
 }
 
